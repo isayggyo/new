@@ -1,0 +1,7 @@
+VAE 검증 실험 v2 (분봉)
+60분 내 감지: 0/3
+Mann-Whitney: 1/3
+
+2018 Bull Crash        MISSED       MW_p=0.0000
+2020 COVID Crash       MISSED       MW_p=1.0000
+2022 FTX Collapse      MISSED       MW_p=1.0000

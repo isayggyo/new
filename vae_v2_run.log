@@ -1,0 +1,85 @@
+VAE 검증 실험 v2 (분봉) 시작
+=================================================================
+Device: cpu
+
+[1] 정상 구간 데이터 로딩...
+  [Normal 2021-H1] 2021-01-01 ~ 2021-06-30 로딩 중...
+    BTCUSDT: 258598개
+    ETHUSDT: 258598개
+    LTCUSDT: 258599개
+    XRPUSDT: 258599개
+  정상 구간: 258599분
+  학습 윈도우: 258538개 (저장 완료)
+
+[2] VAE 학습...
+  학습 중 (258538개 윈도우, 60 epochs)...
+    Epoch 10/60  recon=0.9782  kl=0.1229  kl_w=0.250
+    Epoch 20/60  recon=0.9783  kl=0.1097  kl_w=0.500
+    Epoch 30/60  recon=0.9739  kl=0.1101  kl_w=0.500
+    Epoch 40/60  recon=0.9702  kl=0.1114  kl_w=0.500
+    Epoch 50/60  recon=0.9650  kl=0.1121  kl_w=0.500
+    Epoch 60/60  recon=0.9637  kl=0.1127  kl_w=0.500
+  모델 저장 완료.
+
+[3] 정상 기준치 계산...
+  기준치: mu=1.0174, sigma=2.6038
+  3-sigma 임계값: 8.8289
+
+[4] 2018 Bull Crash 분석 중...
+  [2018 Bull Crash] 2018-01-07 ~ 2018-01-08 로딩 중...
+    BTCUSDT: 321개
+    ETHUSDT: 321개
+    LTCUSDT: 321개
+    XRPUSDT: 데이터 없음
+    XRPUSDT: 누락 -- 0으로 대체
+
+  [2018 Bull Crash]
+    기준치: 8.8289 (mu+3.0sigma)
+    사전 평균: 0.5164  사후 평균: 1.3543
+    감지: 없음
+    Mann-Whitney p = 0.0000 [POST>PRE]
+    판정: [MISSED]
+
+[4] 2020 COVID Crash 분석 중...
+  [2020 COVID Crash] 2020-03-11 ~ 2020-03-12 로딩 중...
+    BTCUSDT: 321개
+    ETHUSDT: 321개
+    LTCUSDT: 321개
+    XRPUSDT: 321개
+
+  [2020 COVID Crash]
+    기준치: 8.8289 (mu+3.0sigma)
+    사전 평균: 0.6884  사후 평균: 0.4614
+    감지: 없음
+    Mann-Whitney p = 1.0000 [NO DIFF]
+    판정: [MISSED]
+
+[4] 2022 FTX Collapse 분석 중...
+  [2022 FTX Collapse] 2022-11-07 ~ 2022-11-08 로딩 중...
+    BTCUSDT: 321개
+    ETHUSDT: 321개
+    LTCUSDT: 321개
+    XRPUSDT: 321개
+
+  [2022 FTX Collapse]
+    기준치: 8.8289 (mu+3.0sigma)
+    사전 평균: 0.3628  사후 평균: 0.2105
+    감지: 없음
+    Mann-Whitney p = 1.0000 [NO DIFF]
+    판정: [MISSED]
+
+그래프 저장: vae_validation_v2.png
+
+=================================================================
+VAE 검증 실험 v2 (분봉) -- 최종 판정
+=================================================================
+60분 내 감지:            0/3
+Mann-Whitney 유의:       1/3
+
+  2018 Bull Crash        MISSED       MW_p=0.0000 [O]
+  2020 COVID Crash       MISSED       MW_p=1.0000 [X]
+  2022 FTX Collapse      MISSED       MW_p=1.0000 [X]
+
+[ 최종 판정 ]
+  WEAK -- 부분 감지. 파라미터 튜닝 또는 DA-VAE 검토
+=================================================================

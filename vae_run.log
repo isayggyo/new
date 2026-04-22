@@ -1,0 +1,47 @@
+VAE 검증 실험 v1 시작
+=================================================================
+Device: cpu
+데이터 로딩 중...
+  완료: 2243일치, 2017-11-09 ~ 2023-12-30
+윈도우 생성: 2212개
+
+학습 데이터: 1880/2212 윈도우 (정상 구간)
+학습 중...
+  Epoch 10/80  loss=1.0022  recon=0.9834  kl=0.1130  kl_w=0.167
+  Epoch 20/80  loss=1.0158  recon=0.9819  kl=0.1016  kl_w=0.333
+  Epoch 30/80  loss=1.0301  recon=0.9798  kl=0.1005  kl_w=0.500
+  Epoch 40/80  loss=1.0315  recon=0.9813  kl=0.1005  kl_w=0.500
+  Epoch 50/80  loss=1.0262  recon=0.9760  kl=0.1004  kl_w=0.500
+  Epoch 60/80  loss=1.0291  recon=0.9789  kl=0.1004  kl_w=0.500
+  Epoch 70/80  loss=1.0350  recon=0.9848  kl=0.1003  kl_w=0.500
+  Epoch 80/80  loss=1.0305  recon=0.9803  kl=0.1005  kl_w=0.500
+
+이상 점수 계산 중...
+점수 범위: 0.1794 ~ 7.1266
+
+통계 검증 중...
+
+  [2018 Bull Crash]
+    L1 평균: 사전=5.5671, 사후=4.5362
+    Kendall's tau = 0.9212, p = 0.0000 [TREND]
+    Mann-Whitney p = 0.0005 [PRE>POST]
+
+  [2020 COVID Crash]
+    L1 평균: 사전=0.9389, 사후=5.5572
+    Kendall's tau = -0.3394, p = 0.0000 [NO TREND]
+    Mann-Whitney p = 1.0000 [NO DIFF]
+
+  [2022 FTX Collapse]
+    L1 평균: 사전=0.9293, 사후=1.6187
+    Kendall's tau = -0.1351, p = 0.0000 [NO TREND]
+    Mann-Whitney p = 1.0000 [NO DIFF]
+
+그래프 저장: vae_validation_v1.png
+
+=================================================================
+Traceback (most recent call last):
+  File "C:\Users\dance\OneDrive\바탕 화면\New folder\vae_validation_v1.py", line 362, in <module>
+    print_summary(results)
+  File "C:\Users\dance\OneDrive\바탕 화면\New folder\vae_validation_v1.py", line 298, in print_summary
+    print("VAE 검증 실험 v1 \u2014 최종 판정")
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2014' in position 13: illegal multibyte sequence
